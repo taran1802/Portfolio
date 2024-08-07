@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/navbar/navbar";
+import Intro from "./components/intro/intro";
+import Skills from "./components/skills/skills";
+import Projects from "./components/projects/projects";
+import Contact from "./components/contact/contact";
+import React, { useState } from 'react';
+import Footer from "./components/footer/footer";
+
 
 function App() {
+  const [activePage, setActivePage] = useState('Home');
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <Navbar setActivePage={setActivePage} />
+            {activePage === 'Home' && <Intro />}
+            {activePage === 'Skills' && <Skills />}
+            {activePage === 'Projects' && <Projects />}
+            {activePage === 'Contact' && <Contact />}
+            <Footer/>
     </div>
+
   );
 }
 
